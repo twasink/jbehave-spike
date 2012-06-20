@@ -8,9 +8,15 @@
 
   <name>JBehave Trader Example</name>
 
+  <!-- These properties allow for changing what gets run without configuring profiles -->
   <properties>
+    <!-- Want to run a subset of the tests? Pass -Dembeddables in with a new pattern. -->
     <embeddables>**/*TraderStories.java</embeddables>
+    <!-- Let's you change the meta-filter used in the plugin. Don't know what that is, but it sounds cool -->
     <meta.filter></meta.filter>
+    <!-- Probably wouldn't usually have these, but this is an example - and it includes examples of failures.
+      By ignoring failures, we can keep them in and still have a passing build.
+      -->
     <ignore.failure.in.stories>true</ignore.failure.in.stories>
     <ignore.failure.in.view>true</ignore.failure.in.view>
   </properties>
@@ -18,6 +24,8 @@
   
   <build>
     <resources>
+      <!-- The stories are in src/main/java, not src/main/resources - so we need to include the java dir.
+           Side-effect: the java files are copied over as well. -->
       <resource>
         <directory>${basedir}/src/main/java</directory>
         <filtering>false</filtering>
@@ -39,6 +47,10 @@
         <groupId>org.jbehave</groupId>
         <artifactId>jbehave-maven-plugin</artifactId>
         <executions>
+          <!-- 
+            - This brings in static resources essential for viewing the generated HTML properly.
+            - Unpacks special 'resources' classifiers from the dependencies (listed below)
+            --> 
           <execution>
             <id>unpack-view-resources</id>
             <phase>process-resources</phase>
@@ -46,10 +58,17 @@
               <goal>unpack-view-resources</goal>
             </goals>
           </execution>
+          
           <execution>
             <id>embeddable-stories</id>
+            <!-- 
+              - Run inside the integration test phase (duh). 
+              - Happens after unit tests (again, duh). 
+              - Has certain consequences to the class path which we'll explore later. 
+              -->
             <phase>integration-test</phase>
             <configuration>
+              <!-- would love to know more about these options; the doco isn't very clear. -->
               <includes>
                 <include>${embeddables}</include>
               </includes>
@@ -80,6 +99,7 @@
 		  <version>3.6.7</version>
 		</dependency>
 
+    <!-- Freemarker templates, internationalisation. -->
     <dependency>
       <groupId>org.jbehave</groupId>
       <artifactId>jbehave-core</artifactId>
@@ -89,6 +109,7 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- Static resources such as logos, css, javascript. -->
     <dependency>
       <groupId>org.jbehave.site</groupId>
       <artifactId>jbehave-site-resources</artifactId>
