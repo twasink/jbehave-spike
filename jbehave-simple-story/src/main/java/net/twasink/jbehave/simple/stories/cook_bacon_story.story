@@ -1,6 +1,4 @@
-Bacon helps to make everything better
-
-Narrative
+Narrative:
 In order to learn how to user JBehave better
 As a developer of some middling-level of competence
 I want to write some example stories about cooking bacon
