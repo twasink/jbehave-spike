@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <groupId>net.twasink.jbehave</groupId>
+  <artifactId>jbehave-spring-hibernate</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>jbehave-spring-hibernate</name>
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+  <dependency>
+  	<groupId>org.jbehave</groupId>
+  	<artifactId>jbehave-core</artifactId>
+  	<version>3.6.7</version>
+  </dependency>
+  </dependencies>
+</project>
