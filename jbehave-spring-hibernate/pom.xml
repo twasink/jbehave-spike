@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <groupId>net.twasink.jbehave</groupId>
   <artifactId>jbehave-spring-hibernate</artifactId>
@@ -16,10 +16,84 @@
   </properties>
 
   <dependencies>
-  <dependency>
-  	<groupId>org.jbehave</groupId>
-  	<artifactId>jbehave-core</artifactId>
-  	<version>3.6.7</version>
-  </dependency>
+    <dependency>
+      <groupId>org.jbehave</groupId>
+      <artifactId>jbehave-core</artifactId>
+      <version>3.6.7</version>
+    </dependency>
+    
+        
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-orm</artifactId>
+        <version>3.0.6.RELEASE</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-tx</artifactId>
+        <version>3.0.6.RELEASE</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aspects</artifactId>
+        <version>3.0.6.RELEASE</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>3.6.9.Final</version>
+    </dependency>
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-annotations</artifactId>
+        <version>3.5.6-Final</version>
+    </dependency>
+    <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjrt</artifactId>
+        <version>1.5.4</version>
+        <scope>runtime</scope>
+    </dependency>
+        <dependency>
+        <groupId>org.javassist</groupId>
+        <artifactId>javassist</artifactId>
+        <version>3.16.1-GA</version>
+        <scope>runtime</scope>
+    </dependency>
+        <!-- without a slf4j bridge, you get no logging if anything goes wrong. -->
+        <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>1.6.4</version>
+        <scope>runtime</scope>
+    </dependency>
+
+    <!--  These would normally be in test scope, but as I've still got the JBehave stuff under the compile scope, that's where this goes too -->
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.10</version>
+        <scope>compile</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-test</artifactId>
+        <version>3.0.6.RELEASE</version>
+        <scope>compile</scope>
+    </dependency>
+    <dependency> <!--  needed to get AOPs around the test cases -->
+        <groupId>cglib</groupId>
+        <artifactId>cglib-nodep</artifactId>
+        <version>2.2.2</version>
+        <scope>compile</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.hsqldb</groupId>
+        <artifactId>hsqldb</artifactId>
+        <version>2.2.8</version>
+        <scope>compile</scope>
+    </dependency>
   </dependencies>
 </project>
