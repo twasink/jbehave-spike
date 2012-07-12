@@ -1,15 +1,16 @@
 package net.twasink.jbehave.spring.stories;
 
-import net.twasink.jbehave.spring.steps.FooServiceSteps;
+import java.util.List;
 
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
 import org.jbehave.core.junit.JUnitStory;
-import org.jbehave.core.steps.InjectableStepsFactory;
-import org.jbehave.core.steps.InstanceStepsFactory;
+import org.jbehave.core.steps.CandidateSteps;
+import org.jbehave.core.steps.spring.SpringStepsFactory;
 import org.junit.After;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -18,7 +19,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration("/testContext.xml")
 public class FooServiceStory extends JUnitStory {
     @Autowired
-    private FooServiceSteps steps;
+    private ApplicationContext context;
     
     @Autowired
     private JdbcTemplate jdbc;
@@ -32,8 +33,9 @@ public class FooServiceStory extends JUnitStory {
         return new MostUsefulConfiguration();
     }
     
-    @Override public InjectableStepsFactory stepsFactory() {
-        return new InstanceStepsFactory(configuration(), steps);
+    @Override
+    public List<CandidateSteps> candidateSteps() {
+        return new SpringStepsFactory(configuration(), context).createCandidateSteps();
     }
 
 }

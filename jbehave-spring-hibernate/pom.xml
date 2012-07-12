@@ -18,7 +18,7 @@
   <dependencies>
     <dependency>
       <groupId>org.jbehave</groupId>
-      <artifactId>jbehave-core</artifactId>
+      <artifactId>jbehave-spring</artifactId>
       <version>3.6.7</version>
     </dependency>
     
@@ -26,18 +26,18 @@
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-orm</artifactId>
-        <version>3.0.6.RELEASE</version>
+        <version>3.1.1.RELEASE</version>
     </dependency>
     
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-tx</artifactId>
-        <version>3.0.6.RELEASE</version>
+        <version>3.1.1.RELEASE</version>
     </dependency>
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-aspects</artifactId>
-        <version>3.0.6.RELEASE</version>
+        <version>3.1.1.RELEASE</version>
     </dependency>
     
     <dependency>
@@ -80,7 +80,7 @@
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-test</artifactId>
-        <version>3.0.6.RELEASE</version>
+        <version>3.1.1.RELEASE</version>
         <scope>compile</scope>
     </dependency>
     <dependency> <!--  needed to get AOPs around the test cases -->
